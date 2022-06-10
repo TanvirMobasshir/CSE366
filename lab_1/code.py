@@ -1,4 +1,4 @@
-def create_undirected_graph(number_of_verticies, number_of_edges):
+def get_undirected_graph(number_of_verticies, number_of_edges):
     grph = []
     for m in range(number_of_verticies + 1):
         grph.append([])
@@ -19,17 +19,26 @@ def bfs(grph, src, des):
     parent = [-1] * len(grph)
 
     distances[src] = 0
+    explored_node = [-1] * len(grph)
+    count = 0
 
     while queue:
         vertex = queue[0]
         queue.pop(0)
 
         for k in range(len(grph[vertex])):
+            if count < len(grph)-1:
+                if explored_node[grph[vertex][k]] == -1:
+                    count += 1
+                    explored_node[grph[vertex][k]] = count
             if distances[grph[vertex][k]] == -1:
                 parent[grph[vertex][k]] = vertex
                 distances[grph[vertex][k]] = distances[vertex] + 1
 
                 queue.append(grph[vertex][k])
+
+    # noinspection PyTypeChecker
+    explored_node[0] = None
 
     print(distances[des])
 
@@ -46,12 +55,20 @@ def bfs(grph, src, des):
         print(paths[s])
         s -= 1
 
+    return explored_node
+
+
+def exploration_tree(node_exploration_order):
+    print("Explored Nodes in order:")
+    print(node_exploration_order)
     return
 
 
 if __name__ == '__main__':
     verticies, edges = map(int, input().split())
-    graph = create_undirected_graph(verticies, edges)
+    graph = get_undirected_graph(verticies, edges)
     source, destination = map(int, input().split())
     print()
-    bfs(graph, source, destination)
+    explored_nodes = bfs(graph, source, destination)
+    print()
+    exploration_tree(explored_nodes)
