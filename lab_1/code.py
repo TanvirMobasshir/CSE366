@@ -20,7 +20,8 @@ def bfs(grph, src, des):
 
     distances[src] = 0
     explored_node = [-1] * len(grph)
-    count = 0
+    explored_node[src] = 1
+    count = 1
 
     while queue:
         vertex = queue[0]
