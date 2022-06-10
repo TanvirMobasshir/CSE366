@@ -75,7 +75,7 @@ def exploration_tree(node_exploration_order):
 
     for i in range(len(node_exploration_order)):
         if i != 0:
-            print(f'{i}, order: {node_exploration_order[i]}')
+            print(f'node: {i}, exploration order: {node_exploration_order[i]}')
 
     return
 
