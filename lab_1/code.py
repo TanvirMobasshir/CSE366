@@ -59,8 +59,24 @@ def bfs(grph, src, des):
 
 
 def exploration_tree(node_exploration_order):
-    print("Explored Nodes in order:")
-    print(node_exploration_order)
+    order = {0: None}
+    for i in range(1, len(node_exploration_order)):
+        order[i] = -1
+    for i in node_exploration_order:
+        if i:
+            order[i] = node_exploration_order.index(i)
+
+    print("Explored nodes in order: ", end=' ')
+    for i in range(len(node_exploration_order)):
+        if order[i]:
+            print(order[i], end=' ')
+
+    print()
+
+    for i in range(len(node_exploration_order)):
+        if i != 0:
+            print(f'{i}, order: {node_exploration_order[i]}')
+
     return
 
 
