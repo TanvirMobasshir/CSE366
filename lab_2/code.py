@@ -10,6 +10,36 @@ class Element:
         self.distance = d
 
 
+class PriorityQueue(object):
+    def __init__(self):
+        self.queue = []
+
+    # for checking if the queue is empty
+    def isEmpty(self):
+        return len(self.queue) == 0
+
+    # for inserting an element in the queue
+    def insert(self, data):
+        self.queue.append(data)
+
+    # for popping an element based on Priority
+    def delete(self):
+        try:
+            max_val = 0
+            for i in range(len(self.queue)):
+                if self.queue[i].distance > self.queue[max_val].distance:
+                    max_val = i
+            item = self.queue[max_val]
+            del self.queue[max_val]
+            return item
+        except IndexError:
+            print("index Error")
+            exit()
+
+
+pq = PriorityQueue()
+
+
 def get_undirected_weighted_graph(number_of_verticies, number_of_edges):
     grph = [[] for _ in range(number_of_verticies + 1)]
     wghts = [[] for _ in range(number_of_verticies + 1)]
@@ -51,6 +81,7 @@ def print_paths(parents, destination, source):
 
 
 def dijkstra(graph, weights, source, destination):
+    global pq
     max_int = sys.maxsize
 
     distances = [max_int for _ in range(len(graph))]
@@ -60,11 +91,10 @@ def dijkstra(graph, weights, source, destination):
 
     distances[source] = 0
 
-    pq = [Element(source, 0)]
+    pq.insert(Element(source, 0))
 
-    while len(pq) != 0:
-        vertex = pq[0].vertex
-        pq.pop(0)
+    while not pq.isEmpty():
+        vertex = pq.delete().vertex
 
         if visited[vertex]:
             continue
@@ -86,7 +116,7 @@ def dijkstra(graph, weights, source, destination):
             if distances[vertex] + distance < distances[neighbour]:
                 parents[neighbour] = vertex
                 distances[neighbour] = distances[vertex] + distance
-                pq.append(Element(neighbour, distances[neighbour]))
+                pq.insert(Element(neighbour, distances[neighbour]))
 
             i += 1
 
