@@ -11,8 +11,8 @@ class Element:
 
 
 def get_undirected_weighted_graph(number_of_verticies, number_of_edges):
-    grph = [[] for i in range(number_of_verticies + 1)]
-    wghts = [[] for i in range(number_of_verticies + 1)]
+    grph = [[] for _ in range(number_of_verticies + 1)]
+    wghts = [[] for _ in range(number_of_verticies + 1)]
 
     for i in range(number_of_edges):
         start, end, distance = map(int, input().split())
@@ -43,8 +43,8 @@ def print_paths(parents, destination, source):
         print(source)
 
         while len(path) != 0:
-            top = path[0]
-            path.pop(-1)
+            top = path[-1]
+            path.pop()
             print(top)
     else:
         print(-1)
@@ -53,10 +53,10 @@ def print_paths(parents, destination, source):
 def dijkstra(graph, weights, source, destination):
     max_int = sys.maxsize
 
-    distances = [max_int for i in range(len(graph))]
-    visited = [False for i in range(len(graph))]
-    parents = [-1 for i in range(len(graph))]
-    final_visited = [0 for i in range(len(graph))]
+    distances = [max_int for _ in range(len(graph))]
+    visited = [False for _ in range(len(graph))]
+    parents = [-1 for _ in range(len(graph))]
+    final_visited = [0 for _ in range(len(graph))]
 
     distances[source] = 0
 

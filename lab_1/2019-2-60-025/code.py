@@ -1,5 +1,5 @@
 def get_undirected_graph(number_of_verticies, number_of_edges):
-    grph = [[] for i in range(number_of_verticies + 1)]
+    grph = [[] for _ in range(number_of_verticies + 1)]
 
     for i in range(number_of_edges):
         start, end = map(int, input().split())
