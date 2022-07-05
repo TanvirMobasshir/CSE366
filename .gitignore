@@ -4,3 +4,7 @@ lab_1/geeksforgeeks_bfs_unweighted_undirected.py
 *.tmp
 *.zip
 *.rar
+*.cpp
+*.exe
+*.o
+*.zip
