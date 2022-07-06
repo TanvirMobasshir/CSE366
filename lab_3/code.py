@@ -26,7 +26,10 @@ def get_undirected_weighted_graph(number_of_verticies, number_of_edges):
 
 def foo(x):
     global colors, dfs_costs, vertices_traversed_to_reach, parents
-    colors = dfs_costs = vertices_traversed_to_reach = parents = [0 for _ in range(x)]
+    colors = [0 for _ in range(x)]
+    dfs_costs = [0 for _ in range(x)]
+    vertices_traversed_to_reach = [0 for _ in range(x)]
+    parents = [-1 for _ in range(x)]
 
 
 def print_path(destination, source):
