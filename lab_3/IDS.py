@@ -73,6 +73,8 @@ def DFS(graph, costs, source, cost, limit):
             parents[neighbour] = source
             DFS(graph, costs, neighbour, dfs_costs[source] + costs[source][i], limit-1)
 
+        i += 1
+
     colors[source] = BLACK
 
 
@@ -98,16 +100,15 @@ def IDS(graph, costs, source, destination, max_limit):
         for k in range(len(parents)):
             parents[k] = -1
 
+        i += 1
+
 
 if __name__ == '__main__':
     vertices, edge = map(int, input().split())
-    g, c = get_undirected_weighted_graph(vertices, edge)
-
     foo(vertices+1)
+
+    g, c = get_undirected_weighted_graph(vertices, edge)
 
     src, des = map(int, input().split())
     IDS(graph=g, costs=c, source=src, destination=des, max_limit=500)
 
-    print(dfs_costs[des])
-    print_path(des, src)
-    print(vertices_traversed_to_reach[des])
