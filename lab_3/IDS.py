@@ -93,11 +93,8 @@ def IDS(graph, costs, source, destination, max_limit):
 
         for k in range(len(colors)):
             colors[k] = WHITE
-        for k in range(len(dfs_costs)):
             dfs_costs[k] = 0
-        for k in range(len(vertices_traversed_to_reach)):
             vertices_traversed_to_reach[k] = 0
-        for k in range(len(parents)):
             parents[k] = -1
 
         i += 1
