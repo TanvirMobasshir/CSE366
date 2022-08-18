@@ -50,16 +50,14 @@ class PriorityQueue:
 class Node:
 
     def __init__(self, parent, mat, empty_tile_position, cost, level):
-        # Stores the parent node of the
-        # current node helps in tracing
-        # path when the answer is found
+        # Stores the parent node of the current node
+        # helps in tracing path when the answer is found
         self.parent = parent
 
         # Stores the matrix
         self.mat = mat
 
-        # Stores the position at which the
-        # empty space tile exists in the matrix
+        # Stores the position at which the empty space tile exists in the matrix
         self.empty_tile_pos = empty_tile_position
 
         # Storesthe number of misplaced tiles
