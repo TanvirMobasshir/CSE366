@@ -56,15 +56,13 @@ def initialize_graph_coloring(m):
 
 
 if __name__ == '__main__':
-    global graph, color
-
     v, e = map(int, input().split())
     graph = [[0 for _ in range(v + 1)] for _ in range(v + 1)]
 
     vertex, connectec_vertex = map(int, input().split())
 
     i = 0
-    while i < e:
+    while i < e - 1:
         vertex, connectec_vertex = map(int, input().split())
         graph[vertex][connectec_vertex] = 1
         graph[connectec_vertex][vertex] = 1
